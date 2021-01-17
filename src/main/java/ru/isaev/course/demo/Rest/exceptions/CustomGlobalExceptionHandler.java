@@ -1,5 +1,6 @@
 package ru.isaev.course.demo.Rest.exceptions;
 
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,16 +18,10 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
                         "https://openexchangerates.org/documentation/."), HttpStatus.NOT_FOUND);
     }
 
+    @Data
     static class AwesomeException {
+
         private String message;
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
 
         public AwesomeException(String message) {
             this.message = message;

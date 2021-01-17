@@ -4,7 +4,9 @@ package ru.isaev.course.demo.model.apiResponse.gif;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Data;
 
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "url",
@@ -19,35 +21,5 @@ public class _480wStill {
     private String width;
     @JsonProperty("height")
     private String height;
-
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
-    }
-
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    @JsonProperty("width")
-    public String getWidth() {
-        return width;
-    }
-
-    @JsonProperty("width")
-    public void setWidth(String width) {
-        this.width = width;
-    }
-
-    @JsonProperty("height")
-    public String getHeight() {
-        return height;
-    }
-
-    @JsonProperty("height")
-    public void setHeight(String height) {
-        this.height = height;
-    }
 
 }

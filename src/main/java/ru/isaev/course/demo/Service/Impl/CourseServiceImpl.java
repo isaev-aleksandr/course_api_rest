@@ -1,6 +1,6 @@
 package ru.isaev.course.demo.Service.Impl;
 
-import feign.FeignException;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,16 +10,17 @@ import ru.isaev.course.demo.Service.CourseService;
 
 import java.time.LocalDate;
 
+@Data
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    @Value("${targetCurrency}")
+    @Value("${course.targetCurrency}")
     private String targetCurrency;
 
-    @Value("${searchWordGifIfMore}")
+    @Value("${course.searchWordGifIfMore}")
     private String searchWordGifIfMore;
 
-    @Value("${searchWordGifIfLess}")
+    @Value("${course.searchWordGifIfLess}")
     private String searchWordGifIfLess;
 
     private CourseClient courseClient;
@@ -50,7 +51,8 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Double getApiCourseYesterday(String currency) {
         return courseClient.getYesterdayCourse(currency, targetCurrency,
-                LocalDate.now().minusDays(1).toString()).getRates().getAdditionalInformation().get(targetCurrency);
+                LocalDate.now().minusDays(1).toString())
+                .getRates().getAdditionalInformation().get(targetCurrency);
     }
 
     @Override

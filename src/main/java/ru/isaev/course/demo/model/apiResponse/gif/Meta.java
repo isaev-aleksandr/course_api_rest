@@ -4,7 +4,9 @@ package ru.isaev.course.demo.model.apiResponse.gif;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Data;
 
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "status",
@@ -19,35 +21,5 @@ public class Meta {
     private String msg;
     @JsonProperty("response_id")
     private String responseId;
-
-    @JsonProperty("status")
-    public Integer getStatus() {
-        return status;
-    }
-
-    @JsonProperty("status")
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    @JsonProperty("msg")
-    public String getMsg() {
-        return msg;
-    }
-
-    @JsonProperty("msg")
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    @JsonProperty("response_id")
-    public String getResponseId() {
-        return responseId;
-    }
-
-    @JsonProperty("response_id")
-    public void setResponseId(String responseId) {
-        this.responseId = responseId;
-    }
 
 }

@@ -19,11 +19,11 @@ public class CourseController {
 
     @GetMapping("/course/{currency}")
     public String getState(@PathVariable String currency){
-        try {
+//        try {
                 return "redirect:" + courseServiceImpl.getFinancialCondition(currency);
-        } catch (FeignException e){
-            throw new ThereIsIncorrectCurrency();
-        }
+//        } catch (FeignException e){
+//            throw new ThereIsIncorrectCurrency();
+//        }
     }
 
 

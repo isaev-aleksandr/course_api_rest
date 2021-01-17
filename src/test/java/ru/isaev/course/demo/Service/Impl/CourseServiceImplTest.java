@@ -18,6 +18,8 @@ import ru.isaev.course.demo.model.apiResponse.course.Rates;
 import ru.isaev.course.demo.model.apiResponse.gif.Data;
 import ru.isaev.course.demo.model.apiResponse.gif.GifResponse;
 
+import java.time.LocalDate;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class CourseServiceImplTest {
@@ -67,19 +69,19 @@ class CourseServiceImplTest {
         //TODO courseResponseLess Mock
         courseResponseLess = new CourseResponse();
         Rates ratesLess = new Rates();
-        ratesLess.setAdditionalProperty(targetCurrency, 2.0);
+        ratesLess.setAdditionalInformation(targetCurrency, 2.0);
         courseResponseLess.setRates(ratesLess);
 
         //TODO courseResponseMore Mock
         courseResponseMore = new CourseResponse();
         Rates ratesMore = new Rates();
-        ratesMore.setAdditionalProperty(targetCurrency, 5.0);
+        ratesMore.setAdditionalInformation(targetCurrency, 5.0);
         courseResponseMore.setRates(ratesMore);
 
         //TODO courseResponseYesterday Mock
         courseResponseYesterday = new CourseResponse();
         Rates ratesYesterday = new Rates();
-        ratesYesterday.setAdditionalProperty(targetCurrency, 3.0);
+        ratesYesterday.setAdditionalInformation(targetCurrency, 3.0);
         courseResponseYesterday.setRates(ratesYesterday);
 
         //TODO gifResponseLess Mock
@@ -101,10 +103,10 @@ class CourseServiceImplTest {
         Mockito.when(courseClient.getTodayCourse(currencyMore, targetCurrency)).thenReturn(courseResponseMore);
 
         //TODO CourseClient .getYesterdayCourse()
-        Mockito.when(courseClient.getYesterdayCourse(currency, targetCurrency, "2021-01-10")).thenReturn(courseResponseYesterday);
+        Mockito.when(courseClient.getYesterdayCourse(currency, targetCurrency, LocalDate.now().minusDays(1).toString())).thenReturn(courseResponseYesterday);
 
         //TODO CourseClient .getYesterdayCourse() to more
-        Mockito.when(courseClient.getYesterdayCourse(currencyMore, targetCurrency, "2021-01-10")).thenReturn(courseResponseYesterday);
+        Mockito.when(courseClient.getYesterdayCourse(currencyMore, targetCurrency, LocalDate.now().minusDays(1).toString())).thenReturn(courseResponseYesterday);
 
         //TODO GifClient .getRandomGif() less
         Mockito.when(gifClient.getRandomGif(searchWordGifIfLess)).thenReturn(gifResponseLess);
