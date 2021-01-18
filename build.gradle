@@ -38,6 +38,9 @@ dependencies {
     testCompile "com.github.tomakehurst:wiremock-jre8:2.27.2"
     compile group: 'com.netflix.ribbon', name: 'ribbon-loadbalancer', version: '2.7.18'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-netflix-ribbon', version: '2.1.2.RELEASE'
+    testCompile group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '3.0.0'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: '2.2.6.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-loadbalancer', version: '3.0.0'
 }
 
 dependencyManagement {
